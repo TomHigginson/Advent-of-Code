@@ -9,7 +9,7 @@ import csv
 id1 = []
 id2 = []
 
-with open("/Users/iv19980/Documents/PhD_Research/AdventOfCode/Advent-of-Code/2024/Day1/Day1_Real.csv", 'r', encoding='utf-8-sig') as file:
+with open("Day1_Real.csv", 'r', encoding='utf-8-sig') as file:
     locations = csv.reader(file)
     for col in locations:
         id1.append(int(col[0]))

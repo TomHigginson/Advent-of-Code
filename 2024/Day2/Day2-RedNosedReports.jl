@@ -21,7 +21,7 @@ function GoodReport(row::Vector{Int})
 
 
     # This is for part 2: we can ignore the 'good' rows and only focus on the 'bad' rows.
-    
+
     else
         # Is one element out of place?
 
@@ -46,7 +46,7 @@ function GoodReport(row::Vector{Int})
 
 end
 
-reports = CSV.read("/Users/iv19980/Documents/PhD_Research/AdventOfCode/Advent-of-Code/2024/Day2/Real.csv", DataFrame, header = false, delim = ",")
+reports = CSV.read("Real.csv", DataFrame, header = false, delim = ",")
 
 FinalReports = [row for row in eachrow(reports) if GoodReport([x for x in collect(row) if !ismissing(x)])]
 
