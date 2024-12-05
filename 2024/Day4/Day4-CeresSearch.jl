@@ -135,7 +135,7 @@ end
 
 # Looping through the letter matrix
 
-Path = "/Users/iv19980/Documents/PhD_Research/AdventOfCode/Day4_Real.txt"
+Path = "TestData.txt"
 
 # probably easiest to convert into a matrix
 function matrix(Path::String)::Matrix{Char}
