@@ -1,8 +1,58 @@
 # Looks like there are some parallels to day 3 here so I shall start with the part 1 function, although redefined.
 # I will adapt the function to be enhanced for today's problem.
 
+## I will seperate part 1 and part 2 functions, although they will likely be almost identical
 
-function Searching(WordSearch::Matrix{Char}, word::String, pos::CartesianIndex{2},depth::Int)::Int
+function Searching_pt1(WordSearch::Matrix{Char}, word::String, pos::CartesianIndex{2},depth::Int)::Int
+
+    count = 0
+
+    # Search for 'X'
+    if WordSearch[pos] != word[1]
+        return 0
+    end
+    if (pos.I[1] < 1 || pos.I[1] > size(WordSearch, 1) || pos.I[2] < 1 || pos.I[2] > size(WordSearch, 2)) 
+        return 0
+    end
+
+    # If we found an 'X' in a valid position, then we can look at all directions
+    
+    Directions = [
+        CartesianIndex(1, 0), 
+        CartesianIndex(-1, 0),  
+        CartesianIndex(0, 1),   
+        CartesianIndex(0, -1),  
+        CartesianIndex(1, 1),   
+        CartesianIndex(-1, 1),  
+        CartesianIndex(1, -1),  
+        CartesianIndex(-1, -1)  
+    ]
+
+    # Any direction for the first letter, second & third MUST be the same
+    for i in Directions
+        letter2 = pos + i
+        if (letter2.I[1] < 1 || letter2.I[1] > size(WordSearch, 1) || letter2.I[2] < 1 || letter2.I[2] > size(WordSearch, 2)) 
+            continue
+        end
+
+        if WordSearch[letter2] == 'M'
+            letter3 = letter2 + i
+            letter4 = letter3 + i
+            if letter3.I[1] >= 1 && letter3.I[1] <= size(WordSearch, 1) && letter3.I[2] >= 1 && letter3.I[2] <= size(WordSearch, 2) &&
+                WordSearch[letter3] == 'A' &&
+                letter4.I[1] >= 1 && letter4.I[1] <= size(WordSearch, 1) && letter4.I[2] >= 1 && letter4.I[2] <= size(WordSearch, 2) &&
+                WordSearch[letter4] == 'S'
+                count += 1
+            end
+        end
+    end
+
+    return count
+end
+
+# Part 2 searching function
+
+function Searching_pt2(WordSearch::Matrix{Char}, word::String, pos::CartesianIndex{2},depth::Int)::Int
 
     count = 0
 
@@ -60,7 +110,7 @@ function CheckAndCount(WordSearch::Matrix{Char}, word::String)
     return Count
 end
 
-Path = "TestData.txt"
+Path = "/Users/iv19980/Documents/PhD_Research/AdventOfCode/Advent-of-Code/2024/Day4/TestData.txt"
 
 # probably easiest to convert into a matrix
 function matrix(Path::String)::Matrix{Char}
