@@ -55,10 +55,13 @@ function check(order::String, update::String)
     lists = updates(update)
     
     for j in lists
-        for i in length(j)
-            passed = true
-            fixed = copy(j)
-            
+        
+        passed = true
+        fixed = copy(j)
+
+        # Not the fastest way but need to make sure there are no repeated occurances
+
+        for i in 1:length(j)
             for (x,y) in rules
                 x_pos = findfirst(==(x), fixed)
                 y_pos = findfirst(==(y), fixed)
@@ -72,18 +75,19 @@ function check(order::String, update::String)
                     insert!(fixed, x_pos, y)
                 end
             end
-
-            if passed === true
-                mid = midpoint(fixed)
-                sum += mid
-                push!(NewLists, fixed)
-
-            else 
-                mid = midpoint(fixed)
-                fixed_sum += mid
-                push!(FixedLists, fixed)
-            end
         end
+
+        if passed === true
+            mid = midpoint(fixed)
+            sum += mid
+            push!(NewLists, fixed)
+
+        else 
+            mid = midpoint(fixed)
+            fixed_sum += mid
+            push!(FixedLists, fixed)
+        end
+    
     end
 
     return NewLists,sum,FixedLists,fixed_sum
@@ -94,10 +98,10 @@ end
 ################################################################################
 
 
-rules_list = "Intrsuction.txt"
+rules_list = "Instructions.txt"
 updates_list = "Updates.csv"
 
-NewList,sum,FixedLists,Fixed_sum = check(rules_list,updates_list)
+NewList,Midsum,FixedLists,Fixed_sum = check(rules_list,updates_list)
 
-print("The answer for part 1: ", sum)
-print("The answer for part 2: ",test1)
+print("The answer for part 1: ", Midsum)
+print("The answer for part 2: ",Fixed_sum)
