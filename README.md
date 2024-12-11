@@ -25,3 +25,7 @@ Anotehr day where I changed the method of writing my solution part way through a
 ## Day 6: Guard Gallivant
 
 I quite liked this one as it seemed fairly simple to use part 1 in part 2 with only a few minor changes. I did make an assumption on the amount of visits of squares creating an infinite loop.
+
+## Day 7: Bridge Repair
+
+I decided to go back to python for this problem. I found the solution simple in python and using a recursion loop that I probably don't use often enough so it was nice to gain extra experience with this.
