@@ -21,3 +21,7 @@ This problem was another interesting one. I originally wanted to code an explici
 ## Day 5: Print Queue
 
 Anotehr day where I changed the method of writing my solution part way through although not to necessarily speed up or improve the code. I have likely made it difficult to run since the input needs to be explicitly broken into two parts but that can be done with an external code rather simply. 
+
+## Day 6: Guard Gallivant
+
+I quite liked this one as it seemed fairly simple to use part 1 in part 2 with only a few minor changes. I did make an assumption on the amount of visits of squares creating an infinite loop.

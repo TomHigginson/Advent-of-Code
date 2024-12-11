@@ -30,13 +30,18 @@ function findguard(map::Matrix{Char})
 
         end
     end
+    error("I cannot find where the guard currently is :(")
 end
 
 
 # Path of the guard. Should be slighly similar to day 3.
+# This is part 1 but could be used iteratively for part 2. Only change is that it will find if it is in a perminant loop.
 function path(map::Matrix{Char})
+    map = copy(map)
+    VisitCount = 0
     
-    VisitCount = 0 
+    # Needed for part 2
+    TotalVisit = 0
 
     directions = [
         CartesianIndex(-1, 0), 
@@ -44,19 +49,30 @@ function path(map::Matrix{Char})
         CartesianIndex(1, 0),   
         CartesianIndex(0, -1),   
     ]
+    # This is no longer necessary but I will leave it in incase I want it back :)
     Orientation = [
         '^',
         '>',
         'v',
         '<',
-    ]
+    ] 
 
     position = findguard(map) 
     row,col,dir = position
 
+    # This is used for part 2, if we have a repeating path then this trips to false
+    loop = true
+
     while true
 
-        
+        TotalVisit += 1
+        # Needed for part 2 to check if there is an infinite loop
+        # (May need to adjust for time/safety ASSUMED: no escape if total visited squares exceeds double the number of squares - not mathematically checked)
+        if TotalVisit > size(map,1) * size(map,2) * 2 
+            loop = false
+            break
+        end
+
         # New position of guard
         GuardPos = CartesianIndex(row,col)
         NextPos = GuardPos + directions[dir]
@@ -64,6 +80,7 @@ function path(map::Matrix{Char})
         if map[row,col] != 'x' 
             VisitCount += 1
             map[row,col] = 'x'
+                
         end
 
         if NextPos[1] < 1 || NextPos[1] > size(map,1) || NextPos[2] < 1 || NextPos[2] > size(map,2)
@@ -79,13 +96,44 @@ function path(map::Matrix{Char})
 
     end
 
-
-    return VisitCount, map
+     # Make loop bool 
+    return VisitCount, map, loop 
 
 end
 
-filepath ="GuardsMap.txt"
+# Bit of a brute force algorithm but it works very quickly with the data given, The print debugging statements might slow it down.
+
+function CheckNewObsticle(map::Matrix{Char})
+   
+    CanBePlaced = 0
+    for i in 1:size(map, 1), j in 1:size(map, 2)
+        
+        if map[i,j] == '.'
+            println("hey I am checking: ($i,$j)")
+            Memory = map[i,j]
+            map[i,j] = '#'
+            Visit,MapTest,loop = path(map)
+
+            
+            if loop == false
+                CanBePlaced +=1
+                println("Placing something here will stop the guard ($i,$j)")
+            end
+
+            # Restore to original
+            map[i, j] = Memory  
+
+        end
+
+    end
+
+    return CanBePlaced
+
+end
+
+filepath ="GuardsPath.txt"
 map = matrix(filepath)
 Count,endmap = path(map)
-print(endmap)
-print(Count)
+NumberOfLocations = CheckNewObsticle(map)
+println("The answer to part 1 is: ",Count)
+println("The answer to part 2 is: ", NumberOfLocations)
