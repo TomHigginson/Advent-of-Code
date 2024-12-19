@@ -106,7 +106,7 @@ function FindNode(map::Matrix{Char})
 
 end
 
-filepath = "/Users/iv19980/Documents/PhD_Research/AdventOfCode/Day8_Real.txt"
+filepath = "AntennaMap.txt"
 
 antennamap = mapmaker(filepath)
 nodes1,nodes2 = FindNode(antennamap)
