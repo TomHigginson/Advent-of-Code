@@ -29,3 +29,15 @@ I quite liked this one as it seemed fairly simple to use part 1 in part 2 with o
 ## Day 7: Bridge Repair
 
 I decided to go back to python for this problem. I found the solution simple in python and using a recursion loop that I probably don't use often enough so it was nice to gain extra experience with this.
+
+## Day 8: Resonant Collinearity
+
+A nice challenge, looking at distances between antenna pairs.
+
+## Day 9: Disk Fragmenter
+
+Using a dictionary to assign the length indicated but julia doesn't automatically order dictionaries so I needed a work around.
+
+## Day 10: Hoof It
+
+Created a Breadth First search to identfy a traversable path. I treated it like a word search taking code from my Day 1.
