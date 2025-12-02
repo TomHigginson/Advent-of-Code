@@ -56,6 +56,7 @@ function RouteFinder(WordSearch::Matrix{Char})::Int
                     push!(visited, (nx,ny))
                 end
             end
+            println(x,", ",y)
         end
         return false
     end
@@ -70,6 +71,6 @@ function RouteFinder(WordSearch::Matrix{Char})::Int
 end
 
 
-filepath = "/Users/iv19980/Documents/PhD_Research/AdventOfCode/Day10_Test.txt"
+filepath = "/Users/iv19980/Documents/Misc/AdventOfCode/Data_csv/Day10_test.txt"
 DiskMap = trailmap(filepath)
 Count = RouteFinder(DiskMap)
