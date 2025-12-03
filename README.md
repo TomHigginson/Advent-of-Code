@@ -1,5 +1,12 @@
 This is where I will submit my advent of code attempts
 
+# 2025: Decorate the North Pole
+
+# Day 1: Secret Entrance
+
+Not too bad, I decided to use argparse to make it command line executable which is usually a nice skill to know.
+
+
 # 2024: Finding the Chief Historian
 
 ## Day 1: Historian Hysteria
