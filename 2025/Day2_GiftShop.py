@@ -4,6 +4,9 @@ import re
 
 # Without Regex, Pyinpy:
 
+# Guess who's back, back again
+# Astropy's back, tell a friend
+
 # Now, this looks like a job for Regex, 
 # So everybody just follow Regex, 
 # Coz we need a little controversey
@@ -79,9 +82,11 @@ def main():
         
     else:
         print("No faulty IDs found")
+    print("\nTherefore the sum of the faulty IDs fpr part 1 is: ",sum(faultyids))
     print("\nTherefore the sum of the faulty IDs for part 2 is: ",sum(faultyids_part2)+sum(faultyids))
 
 # A visionary but vision is scary
 # Could start a revolution, polluting the regex
+
 if __name__ == "__main__":
     main()
