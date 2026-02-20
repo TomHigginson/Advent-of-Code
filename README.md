@@ -2,9 +2,15 @@ This is where I will submit my advent of code attempts
 
 # 2025: Decorate the North Pole
 
-# Day 1: Secret Entrance
+## Day 1: Secret Entrance
 
 Not too bad, I decided to use argparse to make it command line executable which is usually a nice skill to know.
+
+## Day 2: Gift Shop
+
+A good friend Regex returns, which made this a suprisingly simple problem. I accidently solved part 2 first so got the worng answer initally when trying to solve part 1 and didn't realise.
+
+## Day 3: Lobby
 
 
 # 2024: Finding the Chief Historian
